@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Protocol 90: Cyber Security & Discipline Command Center</title>
+  <meta name="description"
+    content="A battle-tested 90-day cyber security mastery, winter discipline command center, and ₹5,000 rent independence protocol for an ambitious beginner in Jaipur.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
+    rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            obsidian: '#080C14',
+            slateCard: '#0F172A',
+            terminalEmerald: '#10B981',
+            hazardAmber: '#F59E0B',
+            systemRed: '#EF4444',
+          },
+          fontFamily: {
+            mono: ['"Fira Code"', '"JetBrains Mono"', 'monospace'],
+            sans: ['Inter', 'sans-serif'],
+            space: ['"Space Grotesk"', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛡️</text></svg>">
+</head>
+
+<body class="bg-[#080C14] text-slate-300 antialiased selection:bg-emerald-500 selection:text-black">
+  <!-- Audio Context Click / Terminal beep FX simulated -->
+
+  <!-- TOP BANNER & REALITY ANCHOR HEADER -->
+  <header class="cmd-header border-b border-slate-800 bg-obsidian-glass sticky top-0 z-40 backdrop-blur-md">
+    <div class="max-w-7xl mx-auto px-4 py-3 sm:px-6 flex flex-wrap items-center justify-between gap-4">
+      <div class="flex items-center space-x-3">
+        <div
+          class="relative flex items-center justify-center w-10 h-10 rounded-lg bg-emerald-950/60 border border-emerald-500/40 text-emerald-400 font-mono font-bold text-xl shadow-[0_0_15px_rgba(16,185,129,0.25)]">
+          P90
+          <span class="absolute -top-1 -right-1 flex h-2.5 w-2.5">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+          </span>
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <h1 class="text-lg sm:text-xl font-bold tracking-tight text-white font-space flex items-center gap-2">
+              PROTOCOL 90 <span
+                class="text-xs px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 font-mono">CYBER
+                COMMAND</span>
+            </h1>
+          </div>
+          <p class="text-xs text-slate-400 font-mono">Jaipur Station // Target: ₹5,000 Flat Rent & Cyber Competency</p>
+        </div>
+      </div>
+
+      <!-- Quick Status & Controls -->
+      <div class="flex items-center flex-wrap gap-2.5 sm:gap-4">
+        <!-- Jaipur Clock & Day -->
+        <div class="bg-slate-900/90 border border-slate-800 rounded-lg px-3 py-1.5 flex items-center gap-3">
+          <div class="text-left font-mono">
+            <div class="text-[10px] text-slate-400 uppercase tracking-widest flex items-center gap-1.5">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block animate-pulse"></span> JAIPUR IST
+            </div>
+            <div id="jaipurClock" class="text-sm font-semibold text-emerald-400 tracking-wider">--:--:--</div>
+          </div>
+          <div class="border-l border-slate-700/60 pl-3 text-left">
+            <div class="text-[10px] text-slate-400 uppercase tracking-widest font-mono">Progress</div>
+            <div class="text-sm font-bold text-white font-mono flex items-center gap-1">
+              <span id="currentDayDisplay" class="text-emerald-300">Day 1</span>
+              <span class="text-xs text-slate-500">/ 90</span>
+              <button id="editDayBtn" title="Calibrate Start Date / Current Day"
+                class="text-slate-400 hover:text-emerald-400 ml-1 transition-colors">
+                ⚙️
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sunday Mode Switch -->
+        <label
+          class="sunday-toggle-btn flex items-center gap-2 px-3 py-1.5 rounded-lg border border-slate-800 bg-slate-900/80 cursor-pointer hover:border-amber-500/40 transition-all select-none">
+          <input type="checkbox" id="sundayModeToggle" class="hidden">
+          <span class="w-2 h-2 rounded-full bg-slate-600 transition-colors" id="sundayIndicator"></span>
+          <span class="text-xs font-mono font-medium text-slate-300" id="sundayLabel">Sunday Mode: OFF</span>
+        </label>
+
+        <!-- Emergency Imposter / Panic Button -->
+        <button id="panicButton"
+          class="relative group px-3.5 py-1.5 rounded-lg font-mono text-xs font-semibold uppercase tracking-wider text-rose-300 bg-rose-950/40 border border-rose-600/50 hover:bg-rose-900/50 hover:border-rose-400 hover:text-white transition-all shadow-[0_0_12px_rgba(239,68,68,0.2)] active:scale-95 flex items-center gap-1.5">
+          <span class="animate-pulse text-rose-500">⚠️</span> PANIC / OVERRIDE
+        </button>
+
+        <!-- Backup & Restore Data Controls -->
+        <div class="flex items-center gap-1">
+          <button id="exportDataBtn" title="Export LocalStorage Data to JSON file"
+            class="p-1.5 rounded bg-slate-900 border border-slate-800 text-slate-400 hover:text-cyan-400 hover:border-cyan-500/40 transition-colors text-xs font-mono">
+            💾 Export
+          </button>
+          <label title="Import LocalStorage Data from JSON"
+            class="p-1.5 rounded bg-slate-900 border border-slate-800 text-slate-400 hover:text-cyan-400 hover:border-cyan-500/40 transition-colors text-xs font-mono cursor-pointer">
+            📥 Import
+            <input type="file" id="importDataInput" accept=".json" class="hidden">
+          </label>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN DASHBOARD CONTENT -->
+  <main class="max-w-7xl mx-auto px-4 py-6 sm:px-6 space-y-6">
+
+    <!-- TOP ROW: TARGET METRICS & LIVE DISCIPLINE INDEX -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+
+      <!-- 1. Rent Independence Target Meter (₹5,000) -->
+      <div
+        class="cyber-card p-5 rounded-xl border border-slate-800 bg-slate-900/60 shadow-lg relative overflow-hidden group">
+        <div
+          class="absolute -right-6 -bottom-6 w-28 h-28 bg-emerald-500/5 rounded-full blur-xl group-hover:bg-emerald-500/10 transition-all pointer-events-none">
+        </div>
+        <div class="flex items-start justify-between mb-3">
+          <div>
+            <div class="text-[11px] font-mono uppercase tracking-widest text-slate-400 flex items-center gap-1.5">
+              <span>🏠</span> NON-NEGOTIABLE TARGET
+            </div>
+            <h2 class="text-xl font-bold text-white font-space mt-0.5">Rent Independence</h2>
+          </div>
+          <button id="openLedgerBtn"
+            class="px-2.5 py-1 text-xs font-mono bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 rounded-md hover:bg-emerald-500/20 transition-all flex items-center gap-1">
+            <span>+</span> Log Income
+          </button>
+        </div>
+
+        <div class="space-y-2">
+          <div class="flex items-baseline justify-between font-mono">
+            <div class="text-2xl font-bold text-emerald-400 flex items-center">
+              <span id="rentEarnedDisplay">₹0</span>
+            </div>
+            <div class="text-xs text-slate-400">
+              Target: <span class="text-slate-200 font-semibold">₹5,000</span> / month
+            </div>
+          </div>
+
+          <!-- Progress Bar -->
+          <div class="w-full bg-slate-800 rounded-full h-3 p-0.5 overflow-hidden border border-slate-700/50">
+            <div id="rentProgressBar"
+              class="bg-gradient-to-r from-emerald-600 to-emerald-400 h-full rounded-full transition-all duration-500 shadow-[0_0_10px_rgba(16,185,129,0.4)]"
+              style="width: 0%"></div>
+          </div>
+
+          <div class="flex justify-between items-center text-[11px] font-mono text-slate-400 pt-1">
+            <span id="rentPercentage">0% Paid to Landlord</span>
+            <span id="rentRemaining" class="text-amber-400">₹5,000 Needed</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Daily Discipline Index Gauge -->
+      <div
+        class="cyber-card p-5 rounded-xl border border-slate-800 bg-slate-900/60 shadow-lg relative flex items-center justify-between">
+        <div>
+          <div class="text-[11px] font-mono uppercase tracking-widest text-slate-400 flex items-center gap-1.5">
+            <span>⚡</span> LIVE PERFORMANCE GAUGE
+          </div>
+          <h2 class="text-xl font-bold text-white font-space mt-0.5">Discipline Index</h2>
+          <p class="text-xs text-slate-400 mt-1 max-w-[190px]">
+            Weighted blend of Routine Checkpoints (<span class="text-emerald-400">60%</span>) & Iron Guardrails (<span
+              class="text-cyan-400">40%</span>).
+          </p>
+          <div id="disciplineStatusTag"
+            class="inline-block mt-2.5 px-2 py-0.5 rounded text-[10px] font-mono uppercase tracking-wider font-semibold bg-slate-800 text-slate-300 border border-slate-700">
+            STATUS: STANDBY
+          </div>
+        </div>
+
+        <div class="relative flex items-center justify-center">
+          <svg class="w-24 h-24 transform -rotate-90" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="40" stroke="#1E293B" stroke-width="8" fill="transparent" />
+            <circle id="disciplineCircle" cx="50" cy="50" r="40" stroke="#10B981" stroke-width="8"
+              stroke-dasharray="251.2" stroke-dashoffset="251.2" stroke-linecap="round" fill="transparent"
+              class="transition-all duration-700" />
+          </svg>
+          <div class="absolute flex flex-col items-center">
+            <span id="disciplinePercentText" class="text-2xl font-bold text-white font-mono">0%</span>
+            <span class="text-[9px] font-mono text-slate-400 tracking-tighter uppercase">RATING</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. Proof-of-Work Quick Stats & Day Motto -->
+      <div
+        class="cyber-card p-5 rounded-xl border border-slate-800 bg-slate-900/60 shadow-lg flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between">
+            <div class="text-[11px] font-mono uppercase tracking-widest text-slate-400 flex items-center gap-1.5">
+              <span>🎯</span> 90-DAY VICTORY TARGETS
+            </div>
+            <span
+              class="text-xs font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">Phase
+              1 ACTIVE</span>
+          </div>
+
+          <div class="grid grid-cols-3 gap-2 mt-3 text-center">
+            <div class="bg-slate-950/70 border border-slate-800/80 rounded-lg p-2">
+              <div class="text-[10px] font-mono text-slate-400">Bandit Labs</div>
+              <div id="banditCounterCard" class="text-base font-bold text-cyan-400 font-mono">0 / 26</div>
+            </div>
+            <div class="bg-slate-950/70 border border-slate-800/80 rounded-lg p-2">
+              <div class="text-[10px] font-mono text-slate-400">THM Rooms</div>
+              <div id="thmCounterCard" class="text-base font-bold text-purple-400 font-mono">0 / 10</div>
+            </div>
+            <div class="bg-slate-950/70 border border-slate-800/80 rounded-lg p-2">
+              <div class="text-[10px] font-mono text-slate-400">Work Logs</div>
+              <div id="powCounterCard" class="text-base font-bold text-amber-400 font-mono">0 Logged</div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="mt-3 pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs font-mono text-slate-400">
+          <span class="truncate pr-2 italic text-slate-300">"Flat is strictly for sleeping. The terminal is your
+            forge."</span>
+          <button id="resetDailyCheckboxesBtn" title="Reset all checkboxes for today"
+            class="shrink-0 text-slate-400 hover:text-amber-400 transition-colors text-[11px] underline">
+            New Day Reset
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- MAIN TWO COLUMN WORKSTATION -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+
+      <!-- LEFT COLUMN: TIME-BLOCKED CHECKLIST & SUNDAY REVISION (7 COLS) -->
+      <div class="lg:col-span-7 space-y-6">
+
+        <!-- STANDARD JAIPUR ROUTINE CHECKLIST -->
+        <section id="weekdayRoutineSection"
+          class="cyber-card rounded-xl border border-slate-800 bg-slate-900/60 p-5 shadow-lg space-y-4">
+          <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+            <div>
+              <div class="flex items-center gap-2">
+                <h2 class="text-base font-bold text-white font-space">Jaipur Sardi (Winter) Time-Blocked Routine</h2>
+                <span
+                  class="px-2 py-0.5 rounded text-[10px] font-mono bg-blue-500/10 text-blue-400 border border-blue-500/20">Mon
+                  - Sat Strict</span>
+              </div>
+              <p class="text-xs text-slate-400 font-mono mt-0.5">Beat the morning cold shock, relocate to office,
+                execute deep blocks.</p>
+            </div>
+            <div class="text-right">
+              <span id="routineCompletionText" class="text-xs font-mono text-emerald-400 font-semibold">0/11 Done</span>
+            </div>
+          </div>
+
+          <!-- Routine Items Container -->
+          <div id="routineList" class="space-y-3">
+            <!-- Dynamically populated via JS -->
+          </div>
+        </section>
+
+        <!-- SUNDAY REVISION & BACKLOG MODE (Hidden by default, shown when Sunday mode is toggled) -->
+        <section id="sundayRoutineSection"
+          class="cyber-card rounded-xl border border-amber-500/40 bg-slate-900/80 p-5 shadow-xl space-y-4 hidden">
+          <div class="flex items-center justify-between border-b border-amber-500/30 pb-3">
+            <div>
+              <div class="flex items-center gap-2">
+                <span class="text-amber-400 text-lg">☀️</span>
+                <h2 class="text-base font-bold text-amber-300 font-space">Sunday Revision & Backlog Mode</h2>
+                <span
+                  class="px-2 py-0.5 rounded text-[10px] font-mono bg-amber-500/20 text-amber-300 border border-amber-500/40">Recharge
+                  Protocol</span>
+              </div>
+              <p class="text-xs text-slate-300 font-mono mt-0.5">Routine paused. Clear lab backlogs, plan next 7 days,
+                take offline walk in Central Park.</p>
+            </div>
+            <div class="text-right">
+              <span id="sundayCompletionText" class="text-xs font-mono text-amber-400 font-semibold">0/3 Done</span>
+            </div>
+          </div>
+
+          <div id="sundayList" class="space-y-3">
+            <!-- Dynamically populated via JS -->
+          </div>
+        </section>
+
+        <!-- DAILY PROOF-OF-WORK TERMINAL LOGGER -->
+        <section class="cyber-card rounded-xl border border-slate-800 bg-slate-900/60 p-5 shadow-lg space-y-4">
+          <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+            <div class="flex items-center gap-2">
+              <div class="w-3 h-3 rounded-full bg-rose-500/80"></div>
+              <div class="w-3 h-3 rounded-full bg-amber-500/80"></div>
+              <div class="w-3 h-3 rounded-full bg-emerald-500/80"></div>
+              <span class="text-xs font-mono text-slate-400 ml-2">user@jaipur-security:~$ log-work --publish</span>
+            </div>
+            <span class="text-xs font-mono text-slate-400">Terminal Logger v2.4</span>
+          </div>
+
+          <form id="powForm" class="space-y-3">
+            <div>
+              <label class="block text-xs font-mono text-slate-300 mb-1">
+                Topic / Tool Tackled <span class="text-emerald-400">*</span>
+              </label>
+              <input type="text" id="powTopic" required
+                placeholder="e.g. Bandit Level 12 gzip decompress or Nmap SYN Scan on target"
+                class="w-full bg-slate-950/80 border border-slate-800 rounded-lg px-3 py-2 text-xs font-mono text-white placeholder-slate-600 focus:outline-none focus:border-emerald-500 transition-colors">
+            </div>
+
+            <div>
+              <label class="block text-xs font-mono text-slate-300 mb-1">
+                Error Encountered & Fix / Breakthrough <span class="text-emerald-400">*</span>
+              </label>
+              <textarea id="powErrorFix" required rows="2"
+                placeholder="Document the exact struggle: e.g. 'tar: error exit delayed' -> Learned to check file types using 'file' command and pipe through gunzip."
+                class="w-full bg-slate-950/80 border border-slate-800 rounded-lg px-3 py-2 text-xs font-mono text-white placeholder-slate-600 focus:outline-none focus:border-emerald-500 transition-colors"></textarea>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div>
+                <label class="block text-xs font-mono text-slate-300 mb-1">
+                  GitHub / Write-up Link
+                </label>
+                <input type="url" id="powLink" placeholder="https://github.com/..."
+                  class="w-full bg-slate-950/80 border border-slate-800 rounded-lg px-3 py-2 text-xs font-mono text-white placeholder-slate-600 focus:outline-none focus:border-emerald-500 transition-colors">
+              </div>
+              <div class="flex items-end">
+                <button type="submit"
+                  class="w-full py-2 px-4 bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-mono font-bold text-xs rounded-lg transition-all shadow-[0_0_15px_rgba(16,185,129,0.3)] active:scale-[0.99] flex items-center justify-center gap-2">
+                  <span>❯_</span> Commit to Proof-of-Work Log
+                </button>
+              </div>
+            </div>
+          </form>
+
+          <!-- Historical Feed Filter & Search -->
+          <div class="pt-2">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-mono text-slate-400 uppercase tracking-wider">Historical Logs (<span
+                  id="powLogCount">0</span>)</span>
+              <input type="text" id="searchPowInput" placeholder="Filter logs..."
+                class="bg-slate-950 border border-slate-800 rounded px-2 py-0.5 text-[11px] font-mono text-slate-300 w-36 focus:outline-none focus:border-cyan-500">
+            </div>
+
+            <div id="powLogList" class="space-y-2.5 max-h-80 overflow-y-auto pr-1 custom-scrollbar">
+              <!-- Dynamically populated entries -->
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- RIGHT COLUMN: GUARDRAILS & 90-DAY CYBER TRACKER (5 COLS) -->
+      <div class="lg:col-span-5 space-y-6">
+
+        <!-- IRON-CLAD GUARDRAILS (ANTI-DISTRACTION SWITCHES) -->
+        <section class="cyber-card rounded-xl border border-slate-800 bg-slate-900/60 p-5 shadow-lg space-y-4">
+          <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+            <div>
+              <div class="flex items-center gap-2">
+                <span class="text-rose-400">🛡️</span>
+                <h2 class="text-base font-bold text-white font-space">Iron-Clad Guardrails</h2>
+              </div>
+              <p class="text-xs text-slate-400 font-mono mt-0.5">Instant penalty if broken. Zero dopamine traps.</p>
+            </div>
+            <div class="text-right">
+              <span id="guardrailStatusBadge"
+                class="text-xs font-mono px-2 py-0.5 rounded font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">All
+                Secure</span>
+            </div>
+          </div>
+
+          <div id="guardrailList" class="space-y-2.5">
+            <!-- Dynamically populated via JS -->
+          </div>
+        </section>
+
+        <!-- CYBER SECURITY CURRICULUM & SPECIFIC LAB TRACKER (PHASE 1 - 3 TABS) -->
+        <section class="cyber-card rounded-xl border border-slate-800 bg-slate-900/60 p-5 shadow-lg space-y-4">
+          <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+            <div>
+              <div class="flex items-center gap-2">
+                <span class="text-cyan-400">⚡</span>
+                <h2 class="text-base font-bold text-white font-space">Cyber Security Curriculum</h2>
+              </div>
+              <p class="text-xs text-slate-400 font-mono mt-0.5">3-Phase 90-Day Progression from Zero to Paid Rent.</p>
+            </div>
+          </div>
+
+          <!-- Phase Navigation Tabs -->
+          <div class="flex border-b border-slate-800 text-xs font-mono">
+            <button
+              class="phase-tab-btn flex-1 py-2 text-center border-b-2 font-semibold transition-colors border-emerald-500 text-emerald-400 bg-slate-800/40"
+              data-phase="1">
+              Phase 1<br><span class="text-[10px] text-slate-400 font-normal">Days 1–30</span>
+            </button>
+            <button
+              class="phase-tab-btn flex-1 py-2 text-center border-b-2 font-semibold transition-colors border-transparent text-slate-400 hover:text-slate-200"
+              data-phase="2">
+              Phase 2<br><span class="text-[10px] text-slate-400 font-normal">Days 31–60</span>
+            </button>
+            <button
+              class="phase-tab-btn flex-1 py-2 text-center border-b-2 font-semibold transition-colors border-transparent text-slate-400 hover:text-slate-200"
+              data-phase="3">
+              Phase 3<br><span class="text-[10px] text-slate-400 font-normal">Days 61–90</span>
+            </button>
+          </div>
+
+          <!-- PHASE 1 CONTENT: Terminal & Networking Dominance -->
+          <div id="phase1View" class="phase-container space-y-4">
+
+            <!-- OverTheWire Bandit Wargame Grid -->
+            <div class="bg-slate-950/80 border border-slate-800/90 rounded-lg p-3.5 space-y-2.5">
+              <div class="flex items-center justify-between">
+                <div>
+                  <h3 class="text-xs font-mono font-bold text-cyan-400 flex items-center gap-1.5">
+                    <span>⚔️</span> OverTheWire Bandit (Level 0 → 25)
+                  </h3>
+                  <span class="text-[10px] text-slate-400 font-mono">SSH, Linux permissions, piping, base64,
+                    compression.</span>
+                </div>
+                <span id="banditCompletionRatio"
+                  class="text-xs font-mono font-bold text-white bg-cyan-950/60 border border-cyan-800/60 px-2 py-0.5 rounded">0/26</span>
+              </div>
+
+              <!-- Bandit Grid Buttons -->
+              <div id="banditGrid" class="grid grid-cols-6 sm:grid-cols-7 gap-1.5 pt-1">
+                <!-- 0 to 25 buttons generated by JS -->
+              </div>
+            </div>
+
+            <!-- Networking Mastery Checkpoints -->
+            <div class="bg-slate-950/80 border border-slate-800/90 rounded-lg p-3.5 space-y-2.5">
+              <div class="flex items-center justify-between">
+                <h3 class="text-xs font-mono font-bold text-cyan-400 flex items-center gap-1.5">
+                  <span>🌐</span> Networking Mastery Checkpoints
+                </h3>
+                <span id="networkingRatio" class="text-xs font-mono text-slate-400">0/6</span>
+              </div>
+              <div id="networkingList" class="space-y-2">
+                <!-- Networking checkboxes generated by JS -->
+              </div>
+            </div>
+
+          </div>
+
+          <!-- PHASE 2 CONTENT: Security Core & TryHackMe Rooms -->
+          <div id="phase2View" class="phase-container space-y-4 hidden">
+
+            <!-- TryHackMe Rooms Checkpoints -->
+            <div class="bg-slate-950/80 border border-slate-800/90 rounded-lg p-3.5 space-y-2.5">
+              <div class="flex items-center justify-between">
+                <div>
+                  <h3 class="text-xs font-mono font-bold text-purple-400 flex items-center gap-1.5">
+                    <span>🎯</span> TryHackMe Foundational Rooms
+                  </h3>
+                  <span class="text-[10px] text-slate-400 font-mono">Linux, Windows, Nmap, Burp Suite, OWASP Top
+                    10.</span>
+                </div>
+                <span id="thmRatio"
+                  class="text-xs font-mono font-bold text-white bg-purple-950/60 border border-purple-800/60 px-2 py-0.5 rounded">0/9</span>
+              </div>
+              <div id="thmList" class="space-y-2 pt-1">
+                <!-- THM list generated by JS -->
+              </div>
+            </div>
+
+            <!-- Public Proof-of-Work Counter (Target 10) -->
+            <div class="bg-slate-950/80 border border-slate-800/90 rounded-lg p-3.5 flex items-center justify-between">
+              <div>
+                <h4 class="text-xs font-mono font-bold text-amber-400">Public Lab Walkthroughs Published</h4>
+                <p class="text-[10px] text-slate-400 font-mono">Medium, Hashnode, GitHub or Notion write-ups.</p>
+              </div>
+              <div class="flex items-center gap-2">
+                <button id="decrementWalkthroughBtn"
+                  class="w-7 h-7 rounded bg-slate-900 border border-slate-700 text-slate-300 hover:text-white font-mono flex items-center justify-center font-bold text-sm">-</button>
+                <span id="walkthroughCountText"
+                  class="text-sm font-mono font-bold text-emerald-400 min-w-[3rem] text-center">0 / 10</span>
+                <button id="incrementWalkthroughBtn"
+                  class="w-7 h-7 rounded bg-slate-900 border border-slate-700 text-slate-300 hover:text-white font-mono flex items-center justify-center font-bold text-sm">+</button>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- PHASE 3 CONTENT: Practical Monetization & Rent Fund -->
+          <div id="phase3View" class="phase-container space-y-4 hidden">
+
+            <div class="bg-slate-950/80 border border-slate-800/90 rounded-lg p-3.5 space-y-2.5">
+              <div class="flex items-center justify-between">
+                <div>
+                  <h3 class="text-xs font-mono font-bold text-emerald-400 flex items-center gap-1.5">
+                    <span>💼</span> Monetization & Independence Milestones
+                  </h3>
+                  <span class="text-[10px] text-slate-400 font-mono">Turn skills into flat rent money in Jaipur.</span>
+                </div>
+                <span id="monetizationRatio" class="text-xs font-mono text-slate-400">0/4</span>
+              </div>
+              <div id="monetizationList" class="space-y-2 pt-1">
+                <!-- Phase 3 checklist generated by JS -->
+              </div>
+            </div>
+
+          </div>
+
+        </section>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- MODAL: EMERGENCY REALITY ANCHOR / PANIC OVERRIDE -->
+  <div id="panicModal"
+    class="fixed inset-0 z-50 bg-black/90 backdrop-blur-xl flex items-center justify-center p-4 hidden">
+    <div
+      class="relative w-full max-w-2xl bg-slate-950 border-2 border-rose-600/70 rounded-xl p-6 shadow-[0_0_50px_rgba(239,68,68,0.35)] space-y-6">
+
+      <div class="flex items-center justify-between border-b border-rose-900/60 pb-3">
+        <div class="flex items-center gap-2">
+          <span class="text-rose-500 font-mono text-lg font-bold animate-pulse">CRITICAL OVERRIDE:</span>
+          <span class="text-xs font-mono text-rose-300 tracking-wider">IMPOSTER / SNOOZE / LAZINESS DETECTED</span>
+        </div>
+        <button id="closePanicModalBtn" class="text-slate-400 hover:text-white text-lg font-mono">✕</button>
+      </div>
+
+      <div
+        class="bg-black/80 rounded-lg p-5 border border-rose-950 font-mono text-sm leading-relaxed space-y-4 text-slate-200">
+        <div class="text-rose-400 font-bold text-xs uppercase tracking-widest flex items-center gap-2">
+          <span>❯</span> JAIPUR REALITY CHECK FOR A 19-YEAR-OLD:
+        </div>
+
+        <p class="text-emerald-400 font-bold text-base border-l-2 border-emerald-500 pl-3">
+          "Zero social status to lose. Sharam is an excuse for inaction. Confidence is built on TryHackMe rooms, not
+          wishes. 5,000 rent is due. Close the thought, open the terminal."
+        </p>
+
+        <div class="text-xs text-slate-400 space-y-1 pt-2 border-t border-slate-800">
+          <p>• Nobody in Jaipur or anywhere else cares if you feel unprepared today. They will only ask: <strong
+              class="text-white">Did you pay your flat rent? Can you configure the Linux network?</strong></p>
+          <p>• Playing BGMI won't pay the landlord. Scrolling Instagram reels of other people's lives will guarantee you
+            stay stuck.</p>
+          <p>• Put on the wired earphones. Open Bandit Level 0 or fire up Wireshark right now.</p>
+        </div>
+      </div>
+
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-3 pt-2">
+        <div class="text-xs font-mono text-slate-500">
+          Terminal Status: Ready to execute command.
+        </div>
+        <button id="acknowledgePanicBtn"
+          class="w-full sm:w-auto px-6 py-2.5 bg-rose-600 hover:bg-rose-500 text-black font-mono font-bold text-xs uppercase tracking-wider rounded-lg transition-all shadow-[0_0_20px_rgba(239,68,68,0.4)]">
+          I Acknowledge. Back to the Terminal.
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- MODAL: MICRO-LEDGER (ADD EARNINGS & VIEW LOGS) -->
+  <div id="ledgerModal"
+    class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 hidden">
+    <div class="relative w-full max-w-lg bg-slate-900 border border-slate-700 rounded-xl p-5 shadow-2xl space-y-4">
+
+      <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+        <div class="flex items-center gap-2">
+          <span class="text-emerald-400 font-mono text-lg">💰</span>
+          <h3 class="text-sm font-bold text-white font-space">Flat Rent Micro-Ledger (Target: ₹5,000)</h3>
+        </div>
+        <button id="closeLedgerModalBtn" class="text-slate-400 hover:text-white font-mono">✕</button>
+      </div>
+
+      <!-- Add Earning Form -->
+      <form id="ledgerForm" class="space-y-3 bg-slate-950/70 p-3.5 rounded-lg border border-slate-800">
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-[11px] font-mono text-slate-400 mb-1">Amount (₹) *</label>
+            <input type="number" id="ledgerAmount" required min="1" max="10000" placeholder="e.g. 500"
+              class="w-full bg-slate-900 border border-slate-700 rounded px-2.5 py-1.5 text-xs font-mono text-emerald-400 focus:outline-none focus:border-emerald-500">
+          </div>
+          <div>
+            <label class="block text-[11px] font-mono text-slate-400 mb-1">Date *</label>
+            <input type="date" id="ledgerDate" required
+              class="w-full bg-slate-900 border border-slate-700 rounded px-2.5 py-1.5 text-xs font-mono text-white focus:outline-none focus:border-emerald-500">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-[11px] font-mono text-slate-400 mb-1">Income Source / Gig *</label>
+          <select id="ledgerSource" required
+            class="w-full bg-slate-900 border border-slate-700 rounded px-2.5 py-1.5 text-xs font-mono text-white focus:outline-none focus:border-emerald-500">
+            <option value="Tech Documentation & Walkthrough">Tech Documentation & Walkthrough</option>
+            <option value="Local Office System & Network Setup">Local Office System & Network Setup</option>
+            <option value="Freelance Cyber Research / OSINT">Freelance Cyber Research / OSINT</option>
+            <option value="Bug Bounty / Security Triage">Bug Bounty / Security Triage</option>
+            <option value="Other Legitimate Skill Work">Other Legitimate Skill Work</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-[11px] font-mono text-slate-400 mb-1">Client / Project Note (Optional)</label>
+          <input type="text" id="ledgerNote" placeholder="e.g. Configured router firewall for local coaching institute"
+            class="w-full bg-slate-900 border border-slate-700 rounded px-2.5 py-1.5 text-xs font-mono text-slate-300 focus:outline-none focus:border-emerald-500">
+        </div>
+
+        <button type="submit"
+          class="w-full py-2 bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-mono font-bold text-xs rounded transition-all">
+          Record Income Entry
+        </button>
+      </form>
+
+      <!-- Existing Entries List -->
+      <div class="space-y-2">
+        <div class="flex items-center justify-between text-xs font-mono text-slate-400">
+          <span>Income History</span>
+          <span id="ledgerTotalCount">0 records</span>
+        </div>
+        <div id="ledgerEntriesList" class="space-y-2 max-h-48 overflow-y-auto pr-1 custom-scrollbar">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- MODAL: CALIBRATE START DATE / PROTOCOL 90 DAY SETTING -->
+  <div id="daySettingsModal"
+    class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 hidden">
+    <div class="relative w-full max-w-sm bg-slate-900 border border-slate-700 rounded-xl p-5 shadow-2xl space-y-4">
+      <div class="flex items-center justify-between border-b border-slate-800 pb-2">
+        <h3 class="text-sm font-bold text-white font-space">Calibrate Protocol 90</h3>
+        <button id="closeDaySettingsModalBtn" class="text-slate-400 hover:text-white font-mono">✕</button>
+      </div>
+
+      <div class="space-y-3 font-mono text-xs">
+        <div>
+          <label class="block text-slate-400 mb-1">Protocol Start Date</label>
+          <input type="date" id="protocolStartDateInput"
+            class="w-full bg-slate-950 border border-slate-700 rounded p-2 text-white focus:outline-none focus:border-emerald-500">
+          <p class="text-[10px] text-slate-500 mt-1">Days will automatically compute based on current Jaipur date.</p>
+        </div>
+
+        <div>
+          <label class="block text-slate-400 mb-1">Or Set Manual Day Number (1 - 90)</label>
+          <input type="number" id="manualDayInput" min="1" max="90" placeholder="1"
+            class="w-full bg-slate-950 border border-slate-700 rounded p-2 text-white focus:outline-none focus:border-emerald-500">
+        </div>
+
+        <button id="saveDaySettingsBtn"
+          class="w-full py-2 bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-bold rounded">
+          Apply Calibration
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION CONTAINER -->
+  <div id="toastContainer" class="fixed bottom-5 right-5 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
+  <!-- FOOTER -->
+  <footer
+    class="border-t border-slate-800/80 py-4 mt-12 bg-obsidian-glass text-center text-xs font-mono text-slate-500">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2">
+      <div>PROTOCOL 90 // ZERO EXCUSES. 12TH PASS TO CYBER SPECIALIST.</div>
+      <div class="text-slate-400">Jaipur Winter Command Center • Built for Autonomous Execution</div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
