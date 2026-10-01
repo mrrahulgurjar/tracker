@@ -22,21 +22,19 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      - name: Setup Android SDK Environment
+      - name: Setup Android SDK Tools & Licenses
         run: |
-          echo "ANDROID_HOME=$ANDROID_HOME" >> $GITHUB_ENV
-          echo "$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools" >> $GITHUB_PATH
+          yes | sdkmanager --licenses || true
+          sdkmanager "platforms;android-33" "build-tools;33.0.2"
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 18
 
-      - name: Install Cordova CLI
-        run: npm install -g cordova
-
-      - name: Create Cordova Android Project & Bundle Web Files
+      - name: Install Cordova & Build Android APK
         run: |
+          npm install -g cordova
           cordova create protocol90_app com.protocol90.app "Protocol90"
           cd protocol90_app
           rm -rf www/*
