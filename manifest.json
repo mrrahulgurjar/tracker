@@ -1,0 +1,24 @@
+{
+  "name": "Protocol 90 Discipline Tracker",
+  "short_name": "Protocol90",
+  "description": "Cyber Security Mastery & 90-Day Discipline Command Center",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#080C14",
+  "theme_color": "#080C14",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
