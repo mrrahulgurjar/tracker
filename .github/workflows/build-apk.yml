@@ -22,30 +22,31 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      - name: Setup Android SDK Tools & Licenses
-        run: |
-          yes | sdkmanager --licenses || true
-          sdkmanager "platforms;android-33" "build-tools;33.0.2"
-
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 18
 
-      - name: Install Cordova & Build Android APK
+      - name: Install Cordova CLI
+        run: npm install -g cordova
+
+      - name: Build Android APK
+        env:
+          ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
         run: |
-          npm install -g cordova
+          export PATH=$PATH:$ANDROID_SDK_ROOT/cmdline-tools/latest/bin:$ANDROID_SDK_ROOT/platform-tools:$ANDROID_SDK_ROOT/tools/bin
+          yes | sdkmanager --licenses || true
           cordova create protocol90_app com.protocol90.app "Protocol90"
           cd protocol90_app
           rm -rf www/*
           cp -r ../*.html ../*.css ../*.js ../*.png ../manifest.json www/ || true
-          cordova platform add android@12.0.0
+          cordova platform add android
           cordova build android --debug
 
       - name: Prepare APK Output
         run: |
           mkdir -p apk-output
-          cp protocol90_app/platforms/android/app/build/outputs/apk/debug/app-debug.apk apk-output/Protocol90.apk
+          cp $(find protocol90_app -name "*.apk" | head -n 1) apk-output/Protocol90.apk
 
       - name: Upload APK Artifact
         uses: actions/upload-artifact@v4
